@@ -92,6 +92,12 @@
     padding-bottom: 3px;
   }
   .topnav nav a:hover { color: var(--text); border-color: var(--accent); }
+  @media (max-width: 640px) {
+    .topnav .wrap { flex-direction: column; align-items: flex-start; height: auto; padding-top: 10px; padding-bottom: 8px; gap: 6px; }
+    .topnav nav { gap: 18px; overflow-x: auto; max-width: 100%; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .topnav nav::-webkit-scrollbar { display: none; }
+    .topnav nav a { white-space: nowrap; }
+  }
 
   /* ---------- Hero ---------- */
   .hero {
@@ -396,6 +402,7 @@
     <nav>
       <a href="#leadership">Leadership track</a>
       <a href="#writing">Thought leadership</a>
+      <a href="/playbook/">Playbook</a>
       <a href="#advisory">Advisory work</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -442,7 +449,7 @@
 
 <div class="record">
   <div class="wrap">
-    <div class="item"><strong>B.E.S.T.</strong>Senior Director, Customer &amp; Technical Operations</div>
+    <div class="item"><strong>B.E.S.T.</strong>Senior Director, CX &amp; Technical Operations</div>
     <div class="item"><strong>OneTen</strong>Head of Customer Success &amp; Experience</div>
     <div class="item"><strong>Apple</strong>Director of Customer Success</div>
     <div class="item"><strong>Match Group</strong>Corporate CX Operations &amp; Escalation Authority</div>
@@ -469,7 +476,7 @@
     <div class="case">
       <div class="meta">
         <strong>B.E.S.T.</strong>
-        <div class="role">Senior Director, Customer &amp; Technical Operations</div>
+        <div class="role">Senior Director, CX &amp; Technical Operations</div>
         <div class="when">2024–2026</div>
       </div>
       <ul>
@@ -629,6 +636,10 @@
     <p class="intro">Selected writing on customer success, operations, and leadership, published on LinkedIn.</p>
 
     <div class="article-list">
+      <a class="article-item" href="/playbook/">
+        <span class="title">The Customer Operating System Playbook: frameworks, templates, and checklists for CS, Operations, and Technology leaders</span>
+        <span class="cue">Open the playbook</span>
+      </a>
       <a class="article-item" href="https://www.linkedin.com/pulse/customer-success-department-its-operating-system-tehrani-burke-iy8ic" target="_blank" rel="noopener">
         <span class="title">Customer Success Is Not a Department. It’s an Operating System.</span>
         <span class="cue">Read on LinkedIn</span>
