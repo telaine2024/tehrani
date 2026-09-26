@@ -1,19 +1,6 @@
-# Tehrani Burke's Portfolio
+# tehraniburke.com
 
-Welcome to my professional portfolio website.
+Source for the personal site of Tehrani Burke, Customer Success, Technology & Operations Executive.
 
-## About Me
-Seasoned software engineering leader with over 10 years of experience in technical program management, IT leadership, and a proven track record of delivering exceptional results in customer and client success. My career journey has been driven by a passion for innovation and a commitment to building high-performing teams.
-## Projects
-- **Project 1**: Enterprise Software Solution
-- **Project 2**: Customer Success Platform
-
-## Skills
-- Software Engineering
-- Technical Program Management
-- Customer Success
-
-## Contact
-- [LinkedIn](https://www.linkedin.com/in/tehraniburke)
-- [Email](mailto:tehrani.burke@gmail.com)
-
+- Portfolio: https://tehraniburke.com
+- The Customer Operating System Playbook: https://tehraniburke.com/playbook/
