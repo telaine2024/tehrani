@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Customer Operating System Playbook | Tehrani Burke</title>
+<meta name="description" content="A working playbook for Customer Success, Operations, and Technology leaders: lifecycle architecture, escalation governance, value reporting, templates, and checklists. By Tehrani Burke.">
+<meta property="og:title" content="The Customer Operating System Playbook">
+<meta property="og:description" content="Frameworks, templates, and checklists for building customer operations that retain, scale, and drive revenue. By Tehrani Burke.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tehraniburke.com/playbook/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --plum:#2B1A45; --plum-2:#3A2658; --gold:#C4A265; --gold-soft:#E9DDC2;
+  --paper:#F6F4F0; --white:#FFFFFF; --ink:#221B2E; --muted:#5F5673; --line:#DDD6E6;
+  --ok:#3E7C5A;
+  --serif:"Roboto Slab", Georgia, "Times New Roman", serif;
+  --sans:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+a{color:var(--plum-2)}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
+img,svg{max-width:100%}
+h1,h2,h3{font-family:var(--serif);line-height:1.2;margin:0}
+h2{font-size:clamp(1.7rem,3.2vw,2.3rem);font-weight:700;color:var(--plum)}
+h3{font-size:1.2rem;font-weight:600;color:var(--plum)}
+p{margin:0 0 1rem}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:20;background:rgba(246,244,240,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.bar-in{max-width:1180px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-family:var(--serif);font-weight:700;font-size:1.1rem;color:var(--plum);text-decoration:none}
+.bar nav{display:flex;gap:22px;flex-wrap:wrap}
+.bar nav a{text-decoration:none;color:var(--muted);font-size:.95rem}
+.bar nav a:hover{color:var(--plum)}
+@media (max-width:760px){.bar nav{display:none}}
+
+/* hero */
+.hero{background:var(--plum);color:#F3EEF8;overflow:hidden}
+.hero-in{max-width:1180px;margin:0 auto;padding:72px 24px 80px;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(2.4rem,5.6vw,4.3rem);font-weight:700;color:#FBF8F2;letter-spacing:-.01em}
+.hero .by{font-family:var(--serif);color:var(--gold);font-size:1.15rem;margin:18px 0 22px}
+.hero p.lede{font-size:1.12rem;max-width:34em;color:#DCD3E8}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-block;padding:13px 22px;border-radius:3px;font-weight:600;text-decoration:none;font-size:.98rem;border:1px solid var(--gold)}
+.btn.primary{background:var(--gold);color:var(--plum)}
+.btn.ghost{color:#FBF8F2}
+.btn.ghost:hover{background:rgba(196,162,101,.12)}
+.loop{width:100%;max-width:420px;justify-self:center}
+.loop text{font-family:var(--sans);font-size:15px;fill:#F3EEF8}
+.loop .core{font-family:var(--serif);font-size:19px;fill:var(--gold);font-weight:600}
+@media (max-width:860px){.hero-in{grid-template-columns:1fr;padding:52px 24px 60px}.loop{max-width:320px}}
+
+/* proof strip */
+.proof{background:var(--white);border-bottom:1px solid var(--line)}
+.proof-in{max-width:1180px;margin:0 auto;padding:26px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.proof b{display:block;font-family:var(--serif);font-size:1.6rem;color:var(--plum)}
+.proof span{font-size:.92rem;color:var(--muted)}
+@media (max-width:760px){.proof-in{grid-template-columns:repeat(2,1fr)}}
+
+/* layout */
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:56px}
+.toc{position:sticky;top:90px;align-self:start;padding-top:64px;font-size:.93rem}
+.toc a{display:block;padding:6px 0 6px 12px;text-decoration:none;color:var(--muted);border-left:2px solid var(--line)}
+.toc a:hover,.toc a.on{color:var(--plum);border-left-color:var(--gold)}
+@media (max-width:960px){.wrap{grid-template-columns:1fr}.toc{display:none}}
+main{min-width:0}
+section{padding:64px 0;border-bottom:1px solid var(--line)}
+section:last-child{border-bottom:0}
+.intro{max-width:40em;color:var(--muted);font-size:1.05rem;margin:14px 0 32px}
+
+/* three systems */
+.systems{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:3px solid var(--plum)}
+.systems div{padding:22px 22px 8px 0}
+.systems div+div{padding-left:22px;border-left:1px solid var(--line)}
+.systems p{font-size:.97rem;color:var(--muted)}
+@media (max-width:760px){.systems{grid-template-columns:1fr}.systems div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
+
+/* steps */
+.progress{display:flex;align-items:center;gap:14px;margin-bottom:18px;font-size:.93rem;color:var(--muted)}
+.meter{flex:1;max-width:260px;height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--gold);transition:width .3s}
+.step{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0;border-top:1px solid var(--line)}
+.step .n{font-family:var(--serif);font-size:1.5rem;color:var(--gold);font-weight:700}
+.step.done .n{color:var(--ok)}
+.step p{margin:.4rem 0 .6rem}
+.need{font-size:.9rem;color:var(--muted)}
+.need strong{color:var(--ink);font-weight:600}
+.mark{margin-top:10px;display:inline-flex;align-items:center;gap:8px;font-size:.92rem;cursor:pointer;color:var(--plum-2);font-weight:500}
+.mark input{width:18px;height:18px;accent-color:var(--plum)}
+details{margin-top:8px}
+summary{cursor:pointer;color:var(--plum-2);font-size:.92rem;font-weight:500}
+details ul{margin:.6rem 0 0;padding-left:1.2rem;font-size:.95rem}
+.reset{background:none;border:0;padding:0;color:var(--muted);text-decoration:underline;cursor:pointer;font:inherit;font-size:.88rem}
+
+/* templates */
+.tmpl{background:var(--white);border:1px solid var(--line);border-left:4px solid var(--gold);padding:26px;margin:0 0 28px}
+.tmpl .use{font-size:.95rem;color:var(--muted);margin:.5rem 0 1rem}
+.tmpl .use strong{color:var(--ink)}
+.tmpl-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.copy{background:var(--plum);color:#fff;border:0;border-radius:3px;padding:10px 16px;font:600 .9rem var(--sans);cursor:pointer;white-space:nowrap}
+.copy:hover{background:var(--plum-2)}
+.copy.ok{background:var(--ok)}
+pre{margin:0;background:#FBFAF7;border:1px solid var(--line);padding:18px;overflow:auto;max-height:420px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.84rem;line-height:1.55;white-space:pre-wrap;color:#2C2438}
+.fill{background:var(--gold-soft);border-radius:2px}
+
+/* tables */
+.tbl{overflow-x:auto;border:1px solid var(--line);background:var(--white)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.95rem}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--serif);font-weight:600;color:var(--plum);background:#F1EDF5}
+tr:last-child td{border-bottom:0}
+
+/* targets */
+.targets{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.targets div{background:var(--white);padding:20px}
+.targets b{display:block;font-family:var(--serif);font-size:1.45rem;color:var(--plum)}
+.targets span{font-size:.92rem;color:var(--muted)}
+.note{font-size:.9rem;color:var(--muted);margin-top:12px}
+
+/* failures */
+.fails{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px}
+.fails ul{list-style:none;margin:.6rem 0 0;padding:0}
+.fails li{padding:7px 0;border-bottom:1px dashed var(--line);font-size:.96rem}
+
+/* checklist */
+.checks{columns:2;column-gap:40px}
+.checks label{display:flex;gap:10px;align-items:flex-start;padding:8px 0;break-inside:avoid;cursor:pointer;font-size:.97rem}
+.checks input{margin-top:5px;width:17px;height:17px;accent-color:var(--plum);flex:none}
+@media (max-width:700px){.checks{columns:1}}
+
+/* principles */
+.princ{counter-reset:none}
+.princ div{padding:20px 0;border-top:1px solid var(--line)}
+.princ p{color:var(--muted);margin:.4rem 0 0;max-width:40em}
+
+/* close */
+.close{background:var(--plum);color:#E7DFF0}
+.close-in{max-width:1180px;margin:0 auto;padding:72px 24px;display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.close h2{color:#FBF8F2}
+.close h3{color:var(--gold)}
+.close p{color:#D6CCE3}
+.path{border-top:1px solid rgba(196,162,101,.5);padding-top:18px}
+.path+.path{margin-top:26px}
+.path a{color:var(--gold)}
+@media (max-width:760px){.close-in{grid-template-columns:1fr}}
+footer{text-align:center;font-size:.88rem;color:var(--muted);padding:28px 24px}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="https://tehraniburke.com">Tehrani Burke</a>
+    <nav aria-label="Site">
+      <a href="#start">Start here</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#templates">Templates</a>
+      <a href="#metrics">Metrics</a>
+      <a href="#work-together">Work together</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-in">
+    <div>
+      <h1>The Customer Operating System Playbook</h1>
+      <p class="by">By Tehrani Burke, Customer Success, Technology &amp; Operations Executive</p>
+      <p class="lede">A working playbook for Customer Success, Operations, and Technology leaders who want retention, service quality, and revenue to come from design, not heroics. Frameworks, copy-ready templates, and checklists drawn from building these systems at Apple, OneTen, and B.E.S.T.</p>
+      <div class="btns">
+        <a class="btn primary" href="#start">Start the playbook</a>
+        <a class="btn ghost" href="#templates">Go to the templates</a>
+      </div>
+    </div>
+    <svg class="loop" viewBox="-30 0 460 400" role="img" aria-label="Customer lifecycle loop: onboard, adopt, prove value, renew, expand, with governance at the center">
+      <circle cx="200" cy="200" r="138" fill="none" stroke="#C4A265" stroke-width="2" stroke-dasharray="4 7"/>
+      <circle cx="200" cy="200" r="72" fill="#3A2658" stroke="#C4A265" stroke-width="1.5"/>
+      <text class="core" x="200" y="195" text-anchor="middle">Governance</text>
+      <text x="200" y="218" text-anchor="middle" style="font-size:13px;fill:#CFC3DE">and reporting</text>
+      <g>
+        <circle cx="200" cy="62" r="9" fill="#C4A265"/><text x="200" y="38" text-anchor="middle">Onboard</text>
+        <circle cx="331" cy="157" r="9" fill="#C4A265"/><text x="346" y="140" text-anchor="start">Adopt</text>
+        <circle cx="281" cy="312" r="9" fill="#C4A265"/><text x="292" y="342" text-anchor="start">Prove value</text>
+        <circle cx="119" cy="312" r="9" fill="#C4A265"/><text x="108" y="342" text-anchor="end">Renew</text>
+        <circle cx="69" cy="157" r="9" fill="#C4A265"/><text x="54" y="140" text-anchor="end">Expand</text>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<div class="proof" aria-label="Results behind this playbook">
+  <div class="proof-in">
+    <div><b>0 to 1</b><span>Chapter operating infrastructure built from zero, NSLS</span></div>
+    <div><b>40%+</b><span>At-risk participants retained, OneTen</span></div>
+    <div><b>$5M+</b><span>Annual enterprise and education renewals influenced, Apple</span></div>
+    <div><b>$1.3M</b><span>At-risk enterprise account recovered, B.E.S.T.</span></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <aside class="toc" aria-label="Playbook contents">
+    <a href="#start">Start here</a>
+    <a href="#workflow">The workflow</a>
+    <a href="#templates">Template library</a>
+    <a href="#cadence">Operating cadence</a>
+    <a href="#metrics">Metrics and targets</a>
+    <a href="#failures">Failure modes</a>
+    <a href="#ready">Readiness checklist</a>
+    <a href="#principles">Principles</a>
+    <a href="#work-together">Work together</a>
+  </aside>
+
+  <main>
+    <section id="start">
+      <h2>Before you change anything</h2>
+      <p class="intro">Three systems do the work. When customers churn, escalations pile up, or renewals surprise you, one of these is usually missing or disconnected from the others. Build them once, then run everything through them.</p>
+      <div class="systems">
+        <div>
+          <h3>Lifecycle architecture</h3>
+          <p>Defines what success looks like at every stage, from first contact through renewal, and who owns each handoff so no customer falls between teams.</p>
+        </div>
+        <div>
+          <h3>Operational governance</h3>
+          <p>Escalation tiers, severity definitions, and SLAs that keep issues from aging quietly in a queue, with clear ownership from first touch to resolution.</p>
+        </div>
+        <div>
+          <h3>Value reporting</h3>
+          <p>The metrics, dashboards, and business reviews that prove ROI to customers and connect customer experience to revenue for your executive team.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <h2>The workflow, in order</h2>
+      <p class="intro">Seven steps to stand up or rebuild a customer operation. Work through them in sequence. Your progress saves in this browser.</p>
+      <div class="progress"><span id="stepCount">0 of 7 complete</span><div class="meter"><i id="stepBar"></i></div><button class="reset" data-reset="step">Reset</button></div>
+
+      <div class="step" data-key="step-0">
+        <div class="n">0</div>
+        <div>
+          <h3>Run a baseline diagnostic</h3>
+          <p>Before redesigning, measure what is actually happening. Pull twelve months of churn, renewal, ticket, and satisfaction data, then talk to the people closest to the problem.</p>
+          <div class="need"><strong>What you need:</strong> CRM and ticketing exports, renewal history, five customer conversations, five frontline conversations</div>
+          <details><summary>More detail</summary><ul>
+            <li>Segment churn by reason, tenure, and customer size. Averages hide the story.</li>
+            <li>Find the oldest open tickets. Aging backlog is the fastest signal of broken ownership.</li>
+            <li>Ask frontline staff where they work around the process. Workarounds show you where the design failed.</li>
+          </ul></details>
+          <label class="mark"><input type="checkbox" data-step> Mark complete</label>
+        </div>
+      </div>
+
+      <div class="step" data-key="step-1">
+        <div class="n">1</div>
+        <div>
+          <h3>Map the customer lifecycle</h3>
+          <p>Define each stage with entry criteria, exit criteria, an owner, and the handoff to the next team. If a stage has no owner, it has no outcome.</p>
+          <div class="need"><strong>What you need:</strong> Your stage list, team roster, current handoff points</div>
+          <details><summary>More detail</summary><ul>
+            <li>Typical stages: sales handoff, onboarding, adoption, value realization, renewal, expansion.</li>
+            <li>Write exit criteria as customer outcomes, such as "first report delivered to their executive," not internal tasks.</li>
+          </ul></details>
+          <label class="mark"><input type="checkbox" data-step> Mark complete</label>
+        </div>
+      </div>
+
+      <div class="step" data-key="step-2">
+        <div class="n">2</div>
+        <div>
+          <h3>Define success and health</h3>
+          <p>Agree with each customer segment on what success means, then build a health score that predicts risk early enough to act on it.</p>
+          <div class="need"><strong>What you need:</strong> Segment definitions, usage data, support history, the health score template below</div>
+          <label class="mark"><input type="checkbox" data-step> Mark complete</label>
+        </div>
+      </div>
+
+      <div class="step" data-key="step-3">
+        <div class="n">3</div>
+        <div>
+          <h3>Build escalation and SLA governance</h3>
+          <p>Set severity levels, tier ownership, response and resolution targets, and a clear path to executive escalation. Then audit the backlog against it.</p>
+          <div class="need"><strong>What you need:</strong> Ticketing platform, the escalation matrix template below, leadership sign-off on targets</div>
+          <details><summary>More detail</summary><ul>
+            <li>When a queue is far behind, reach out to affected customers personally. Acknowledging a lapse rebuilds more trust than silence does.</li>
+            <li>Track SLA breaches weekly, not monthly. Breaches compound.</li>
+          </ul></details>
+          <label class="mark"><input type="checkbox" data-step> Mark complete</label>
+        </div>
+      </div>
+
+      <div class="step" data-key="step-4">
+        <div class="n">4</div>
+        <div>
+          <h3>Instrument the reporting</h3>
+          <p>Build one source of truth for retention, service, and value metrics. Automate it so the team spends its time acting on data, not assembling it.</p>
+          <div class="need"><strong>What you need:</strong> CRM, BI tool, the metric definitions in this playbook</div>
+          <label class="mark"><input type="checkbox" data-step> Mark complete</label>
+        </div>
+      </div>
+
+      <div class="step" data-key="step-5">
+        <div class="n">5</div>
+        <div>
+          <h3>Enable the team</h3>
+          <p>Give frontline and customer-facing teams runbooks, troubleshooting guides, and self-service content so good outcomes do not depend on who picks up the ticket.</p>
+          <div class="need"><strong>What you need:</strong> Top ticket drivers, a knowledge base, time with your best performers</div>
+          <label class="mark"><input type="checkbox" data-step> Mark complete</label>
+        </div>
+      </div>
+
+      <div class="step" data-key="step-6">
+        <div class="n">6</div>
+        <div>
+          <h3>Run the value cadence</h3>
+          <p>Hold regular business reviews, risk reviews, and expansion conversations. Customers renew what they can see, so make the value visible on a schedule.</p>
+          <div class="need"><strong>What you need:</strong> The business review agenda below, account health data, executive sponsors on both sides</div>
+          <label class="mark"><input type="checkbox" data-step> Mark complete</label>
+        </div>
+      </div>
+    </section>
+
+    <section id="templates">
+      <h2>Template library</h2>
+      <p class="intro">Copy any template into your own tools and fill in the highlighted fields. Each one is a starting structure. Adjust weights, targets, and wording to your business.</p>
+
+      <div class="tmpl">
+        <div class="tmpl-head"><h3>Customer health score framework</h3><button class="copy" data-copy="t1">Copy template</button></div>
+        <p class="use"><strong>Use this when</strong> you need an early warning system for churn risk, or your current score is not predicting what actually happens.</p>
+<pre id="t1">CUSTOMER HEALTH SCORE FRAMEWORK
+Segment: <span class="fill">[Enterprise / Mid-market / SMB]</span>
+Review cadence: <span class="fill">[Weekly for red, monthly for all]</span>
+
+SIGNAL                      WEIGHT   GREEN               YELLOW              RED
+Product adoption            <span class="fill">30%</span>      <span class="fill">[&gt;70% of seats active]</span>  <span class="fill">[40-70%]</span>            <span class="fill">[&lt;40%]</span>
+Outcome progress            <span class="fill">25%</span>      Success criteria    Partially met       Not met or
+                                     met on schedule                         undefined
+Support experience          <span class="fill">15%</span>      No open P1/P2       Aging tickets       Open escalation
+Relationship strength       <span class="fill">15%</span>      Exec sponsor        Champion only       No active
+                                     engaged                                 contact
+Sentiment (CSAT / survey)   <span class="fill">15%</span>      <span class="fill">[&gt;=90%]</span>            <span class="fill">[75-89%]</span>            <span class="fill">[&lt;75%]</span>
+
+SCORING
+Green = 3 points, Yellow = 2, Red = 1. Multiply by weight and total.
+Overall: 2.5+ Healthy | 1.8-2.49 Watch | Below 1.8 At risk
+
+REQUIRED ACTIONS
+At risk: recovery plan within 5 business days, owner named, leadership visibility
+Watch: CSM outreach within 10 business days, root cause noted in CRM
+Healthy: identify expansion or advocacy opportunity at next review
+
+CALIBRATION
+Every quarter, compare scores from 90 days ago with actual renewals and churn.
+If the score missed, change the weights. A health score is a hypothesis.</pre>
+      </div>
+
+      <div class="tmpl">
+        <div class="tmpl-head"><h3>Escalation matrix and SLA governance</h3><button class="copy" data-copy="t2">Copy template</button></div>
+        <p class="use"><strong>Use this when</strong> escalations depend on who is available, tickets age without owners, or customers escalate straight to your executives.</p>
+<pre id="t2">ESCALATION MATRIX AND SLA GOVERNANCE
+Team / platform: <span class="fill">[Team name, ticketing system]</span>
+
+SEVERITY DEFINITIONS
+P1 Critical   Service down or data at risk for multiple customers
+P2 High       Core workflow blocked for one customer, no workaround
+P3 Medium     Degraded experience, workaround available
+P4 Low        Question, request, or cosmetic issue
+
+TIERS AND OWNERSHIP
+Tier 1  Frontline support    Triage, known fixes, knowledge base
+Tier 2  Specialists          Complex troubleshooting, configuration
+Tier 3  Engineering/Product  Defects, platform changes
+Exec    <span class="fill">[Director or VP name]</span>   P1s, at-risk accounts, customer executive requests
+
+SLA TARGETS
+Severity   First response   Update cadence     Resolution target
+P1         <span class="fill">[30 min]</span>         <span class="fill">[Every 2 hours]</span>    <span class="fill">[8 hours]</span>
+P2         <span class="fill">[2 hours]</span>        <span class="fill">[Daily]</span>            <span class="fill">[2 business days]</span>
+P3         <span class="fill">[1 business day]</span> <span class="fill">[Every 3 days]</span>     <span class="fill">[5 business days]</span>
+P4         <span class="fill">[2 business days]</span> <span class="fill">[On change]</span>       <span class="fill">[10 business days]</span>
+
+RULES
+1. Every ticket has one named owner at all times.
+2. A breached SLA escalates automatically one tier up.
+3. P1s trigger a customer communication within the first-response window.
+4. Weekly review: breaches, oldest open tickets, repeat drivers.
+5. Monthly: top three root causes go to Product with customer impact attached.</pre>
+      </div>
+
+      <div class="tmpl">
+        <div class="tmpl-head"><h3>At-risk account recovery plan</h3><button class="copy" data-copy="t3">Copy template</button></div>
+        <p class="use"><strong>Use this when</strong> a customer questions the ROI they are getting, a renewal is in doubt, or an executive sponsor has gone quiet.</p>
+<pre id="t3">AT-RISK ACCOUNT RECOVERY PLAN
+Account: <span class="fill">[Name]</span>          Annual value: <span class="fill">[$]</span>          Renewal date: <span class="fill">[Date]</span>
+Recovery owner: <span class="fill">[Name]</span>   Executive sponsor (ours): <span class="fill">[Name]</span>
+
+1. WHAT THE CUSTOMER BELIEVES
+In their words, what is not working? <span class="fill">[Quote or summary]</span>
+What did they expect when they bought? <span class="fill">[Original success criteria]</span>
+
+2. WHAT THE DATA SHOWS
+Adoption: <span class="fill">[ ]</span>   Open issues: <span class="fill">[ ]</span>   Delivered outcomes to date: <span class="fill">[ ]</span>
+Gap between expectation and delivery: <span class="fill">[ ]</span>
+
+3. ACKNOWLEDGE
+What we own and will say plainly in the first conversation: <span class="fill">[ ]</span>
+
+4. RECOVERY ACTIONS (30 / 60 / 90 days)
+30 days: <span class="fill">[Fix the most visible issue, agree on revised success criteria]</span>
+60 days: <span class="fill">[Deliver first measurable result, share value report]</span>
+90 days: <span class="fill">[Business review with their executive, renewal conversation]</span>
+
+5. VALUE REPORTING
+Metrics we will report, how often, and to whom: <span class="fill">[ ]</span>
+
+6. EXIT CRITERIA
+The account moves back to healthy when: <span class="fill">[ ]</span></pre>
+      </div>
+
+      <div class="tmpl">
+        <div class="tmpl-head"><h3>Executive business review agenda</h3><button class="copy" data-copy="t4">Copy template</button></div>
+        <p class="use"><strong>Use this when</strong> you want business reviews that customers' executives actually attend, and that lead to renewal and expansion conversations.</p>
+<pre id="t4">EXECUTIVE BUSINESS REVIEW (45 minutes)
+Customer: <span class="fill">[Name]</span>     Attendees: <span class="fill">[Their exec, champion; our exec, CSM]</span>
+
+5 min   Their priorities
+        Confirm what matters to them this quarter. Ask, do not assume.
+
+10 min  Outcomes delivered
+        Results against the success criteria agreed at onboarding,
+        in their business terms: time saved, cost avoided, revenue supported.
+
+10 min  What we learned
+        Adoption trends, support themes, and one honest area to improve.
+
+10 min  What comes next
+        Recommendations tied to their priorities, including any expansion
+        that solves a stated problem.
+
+5 min   Commitments
+        Named owners and dates on both sides.
+
+5 min   Feedback
+        How are we doing as a partner? What would make us indispensable?
+
+FOLLOW-UP within 2 business days: summary, commitments, next review date.</pre>
+      </div>
+
+      <div class="tmpl">
+        <div class="tmpl-head"><h3>AI prompt: customer operations analyst</h3><button class="copy" data-copy="t5">Copy prompt</button></div>
+        <p class="use"><strong>Use this when</strong> you have a ticket export, survey results, or churn notes and want a structured first read before your leadership review. Remove customer names and personal data before pasting anything into an AI tool.</p>
+<pre id="t5">You are a senior customer operations analyst advising a <span class="fill">[VP of Customer Success / COO]</span> at a <span class="fill">[company type]</span> serving <span class="fill">[customer segment]</span>.
+
+I will paste <span class="fill">[ticket data / survey responses / churn notes]</span> covering <span class="fill">[time period]</span>. All personal data has been removed.
+
+Analyze it and return:
+1. The top five drivers of volume or dissatisfaction, with counts or share of total.
+2. For each driver: likely root cause, whether it is a product, process, or people issue, and the evidence.
+3. Leading indicators of churn risk you can see in the data.
+4. Three fixes ranked by impact and effort, each with an owner function and a metric to track.
+5. What the data cannot tell us, and what I should collect next.
+
+Rules:
+- Separate what the data shows from what you are inferring. Label inferences.
+- Do not invent numbers. If something is not in the data, say so.
+- Write for an executive audience: concise, specific, decision-ready.
+
+Data:
+<span class="fill">[paste here]</span></pre>
+      </div>
+    </section>
+
+    <section id="cadence">
+      <h2>Operating cadence</h2>
+      <p class="intro">Systems only work if they run on a rhythm. This is the minimum cadence that keeps governance, risk, and value visible.</p>
+      <div class="tbl"><table>
+        <thead><tr><th>Rhythm</th><th>Review</th><th>Owner</th><th>Output</th></tr></thead>
+        <tbody>
+          <tr><td>Weekly</td><td>SLA breaches, oldest tickets, red accounts</td><td>Operations lead</td><td>Owners and dates on every exception</td></tr>
+          <tr><td>Monthly</td><td>Health score movement, top ticket drivers, renewals due in 90 days</td><td>CS leadership</td><td>Recovery plans, root causes sent to Product</td></tr>
+          <tr><td>Quarterly</td><td>Business reviews, retention and expansion results, health score calibration</td><td>VP or executive sponsor</td><td>Executive report, updated targets</td></tr>
+          <tr><td>Annually</td><td>Lifecycle design, segmentation, team structure, tooling</td><td>Executive team</td><td>Operating plan for the next year</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="metrics">
+      <h2>Metrics and starting targets</h2>
+      <p class="intro">The targets below are the starting points I use when building a customer success framework. Treat them as a baseline to calibrate against your own data, not universal benchmarks.</p>
+      <div class="targets">
+        <div><b>80 to 90%</b><span>First contact resolution</span></div>
+        <div><b>24 to 48 hrs</b><span>Average time to ticket closure</span></div>
+        <div><b>95%+</b><span>Customer satisfaction (CSAT)</span></div>
+        <div><b>5%+ a year</b><span>Reduction in churn</span></div>
+        <div><b>10%+ a year</b><span>Growth in customer advocacy</span></div>
+      </div>
+      <h3 style="margin:40px 0 14px">Definitions</h3>
+      <div class="tbl"><table>
+        <thead><tr><th>Metric</th><th>How to calculate</th><th>Why it matters</th></tr></thead>
+        <tbody>
+          <tr><td>Gross revenue retention</td><td>(Starting recurring revenue minus churn and downgrades) ÷ starting recurring revenue</td><td>Shows how well you keep what you have, with expansion excluded</td></tr>
+          <tr><td>Net revenue retention</td><td>(Starting recurring revenue minus churn and downgrades plus expansion) ÷ starting recurring revenue</td><td>Shows whether existing customers grow the business</td></tr>
+          <tr><td>Logo churn rate</td><td>Customers lost in period ÷ customers at start of period</td><td>Counts relationships lost, regardless of size</td></tr>
+          <tr><td>First contact resolution</td><td>Issues resolved on first contact ÷ total issues</td><td>A direct read on enablement and knowledge quality</td></tr>
+          <tr><td>SLA attainment</td><td>Tickets meeting response and resolution targets ÷ total tickets</td><td>Tests whether governance holds under load</td></tr>
+          <tr><td>Time to value</td><td>Days from contract start to first agreed success milestone</td><td>The earliest predictor of renewal</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="failures">
+      <h2>Failure modes to design out</h2>
+      <p class="intro">Most customer operations break in predictable places. Name the ones most likely in your organization and build a control for each.</p>
+      <div class="fails">
+        <div><h3>Lifecycle</h3><ul><li>Onboarding with no agreed success criteria</li><li>Sales-to-CS handoff that loses context</li><li>Renewal work that starts 30 days out</li></ul></div>
+        <div><h3>Governance</h3><ul><li>Tickets with no single owner</li><li>Escalation that depends on who is online</li><li>Backlog nobody reviews by age</li></ul></div>
+        <div><h3>Data</h3><ul><li>Vanity metrics in executive reports</li><li>Health scores never checked against outcomes</li><li>Three teams, three versions of churn</li></ul></div>
+        <div><h3>People</h3><ul><li>Outcomes that depend on heroics</li><li>No runbooks for top ticket drivers</li><li>Frontline feedback that never reaches Product</li></ul></div>
+        <div><h3>Customer</h3><ul><li>Silence mistaken for satisfaction</li><li>Value delivered but never reported</li><li>Executive sponsor who left unnoticed</li></ul></div>
+      </div>
+    </section>
+
+    <section id="ready">
+      <h2>Readiness checklist</h2>
+      <p class="intro">Before you scale headcount, customers, or tooling, confirm these are in place. Your progress saves in this browser.</p>
+      <div class="progress"><span id="checkCount">0 of 14 in place</span><div class="meter"><i id="checkBar"></i></div><button class="reset" data-reset="check">Reset</button></div>
+      <div class="checks" id="checks">
+        <label><input type="checkbox" data-check>Every lifecycle stage has an owner and exit criteria</label>
+        <label><input type="checkbox" data-check>Success criteria are agreed with each customer at onboarding</label>
+        <label><input type="checkbox" data-check>Health score is defined and calibrated in the last quarter</label>
+        <label><input type="checkbox" data-check>Severity levels and SLA targets are documented</label>
+        <label><input type="checkbox" data-check>Every open ticket has one named owner</label>
+        <label><input type="checkbox" data-check>SLA breaches are reviewed weekly</label>
+        <label><input type="checkbox" data-check>Runbooks exist for the top ten ticket drivers</label>
+        <label><input type="checkbox" data-check>Self-service content covers repeat questions</label>
+        <label><input type="checkbox" data-check>Retention metrics come from one source of truth</label>
+        <label><input type="checkbox" data-check>Reporting is automated, not assembled by hand</label>
+        <label><input type="checkbox" data-check>At-risk accounts have written recovery plans</label>
+        <label><input type="checkbox" data-check>Top root causes go to Product every month</label>
+        <label><input type="checkbox" data-check>Strategic accounts get business reviews on a schedule</label>
+        <label><input type="checkbox" data-check>Customer outcomes appear in executive reporting</label>
+      </div>
+    </section>
+
+    <section id="principles">
+      <h2>Principles behind the playbook</h2>
+      <p class="intro">The ideas I come back to every time I build or rebuild a customer operation.</p>
+      <div class="princ">
+        <div><h3>Customer success is an operating system, not a department</h3><p>Retention is decided by how Sales, Product, Support, and Finance work together. A CS team alone cannot fix a broken handoff.</p></div>
+        <div><h3>Design beats effort</h3><p>If good outcomes depend on people working harder, the system is the problem. Build processes that make the right result the easy result.</p></div>
+        <div><h3>Empathy is a strategy that scales</h3><p>Understanding what customers expected, and saying plainly where you fell short, rebuilds trust faster than any discount.</p></div>
+        <div><h3>One size does not fit all</h3><p>Segment by what customers need to succeed, not only by what they pay. Different segments need different motions.</p></div>
+        <div><h3>Silence is not satisfaction</h3><p>Customers who stop complaining have often stopped caring. Measure engagement, not only the absence of tickets.</p></div>
+        <div><h3>Make value visible</h3><p>Customers renew what they can see. If you deliver outcomes but never report them, you have left the renewal to chance.</p></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="close" id="work-together">
+  <div class="close-in">
+    <div>
+      <h2>Want this running in your organization?</h2>
+      <p style="margin-top:16px">I build customer operations that retain customers, scale cleanly, and connect service to revenue. There are two ways to work with me.</p>
+    </div>
+    <div>
+      <div class="path">
+        <h3>For founders and CS leaders</h3>
+        <p>The SaaS Customer Success &amp; Revenue Diagnostic: a focused assessment of your lifecycle, governance, and reporting, with a prioritized plan to reduce churn and grow retention.</p>
+        <a href="https://tehraniburke.com">See advisory work on tehraniburke.com</a>
+      </div>
+      <div class="path">
+        <h3>For recruiters and hiring teams</h3>
+        <p>I lead Customer Success, Operations, and Technology organizations at the Senior Director and VP level.</p>
+        <a href="https://tehraniburke.com">See the leadership track</a> or <a href="https://www.linkedin.com/in/tehraniburke">connect on LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>The Customer Operating System Playbook by Tehrani Burke. Free to use in your own organization.</footer>
+
+<script>
+(function(){
+  function load(k){try{return JSON.parse(localStorage.getItem(k)||"[]")}catch(e){return []}}
+  function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+
+  function tracker(sel, key, countEl, barEl, label, onEach){
+    var boxes=[].slice.call(document.querySelectorAll(sel));
+    var state=load(key);
+    boxes.forEach(function(b,i){b.checked=!!state[i]});
+    function render(){
+      var n=boxes.filter(function(b){return b.checked}).length;
+      document.getElementById(countEl).textContent=n+" of "+boxes.length+" "+label;
+      document.getElementById(barEl).style.width=(n/boxes.length*100)+"%";
+      if(onEach) boxes.forEach(onEach);
+    }
+    boxes.forEach(function(b){b.addEventListener("change",function(){save(key,boxes.map(function(x){return x.checked}));render()})});
+    render();
+    return function reset(){boxes.forEach(function(b){b.checked=false});save(key,[]);render()};
+  }
+  var resetSteps=tracker("[data-step]","tb-playbook-steps","stepCount","stepBar","complete",function(b){
+    b.closest(".step").classList.toggle("done",b.checked);
+  });
+  var resetChecks=tracker("[data-check]","tb-playbook-checks","checkCount","checkBar","in place");
+  document.querySelectorAll("[data-reset]").forEach(function(btn){
+    btn.addEventListener("click",function(){ btn.dataset.reset==="step"?resetSteps():resetChecks(); });
+  });
+
+  document.querySelectorAll("[data-copy]").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var text=document.getElementById(btn.dataset.copy).innerText;
+      var orig=btn.textContent;
+      function done(ok){btn.textContent=ok?"Copied":"Select and copy manually";btn.classList.toggle("ok",ok);setTimeout(function(){btn.textContent=orig;btn.classList.remove("ok")},1800)}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){done(true)},function(){done(false)})}
+      else{try{var t=document.createElement("textarea");t.value=text;document.body.appendChild(t);t.select();var ok=document.execCommand("copy");t.remove();done(ok)}catch(e){done(false)}}
+    });
+  });
+
+  var links=[].slice.call(document.querySelectorAll(".toc a"));
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)})}})},{rootMargin:"-40% 0px -55% 0px"});
+    document.querySelectorAll("main section").forEach(function(s){io.observe(s)});
+  }
+})();
+</script>
+</body>
+</html>
