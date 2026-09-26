@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI Readiness Scorecard for Customer Operations | Tehrani Burke</title>
+<meta name="description" content="A 10-minute scorecard to find out whether your customer operation is ready for AI: data, process, governance, people, and measurement. By Tehrani Burke.">
+<meta property="og:title" content="AI Readiness Scorecard for Customer Operations">
+<meta property="og:description" content="AI accelerates whatever you've already built. Find out what it will accelerate in your customer operation. A 10-minute scorecard by Tehrani Burke.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tehraniburke.com/ai-readiness/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --plum:#2B1A45; --plum-2:#3A2658; --gold:#C4A265; --gold-soft:#E9DDC2;
+  --paper:#F6F4F0; --white:#FFFFFF; --ink:#221B2E; --muted:#5F5673; --line:#DDD6E6;
+  --red:#A6423A; --amber:#9A6B16; --green:#3E7C5A;
+  --serif:"Roboto Slab", Georgia, "Times New Roman", serif;
+  --sans:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+a{color:var(--plum-2)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--serif);line-height:1.2;margin:0;color:var(--plum)}
+p{margin:0 0 1rem}
+
+.bar{position:sticky;top:0;z-index:20;background:rgba(246,244,240,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.bar-in{max-width:1000px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-family:var(--serif);font-weight:700;font-size:1.1rem;color:var(--plum);text-decoration:none}
+.bar nav{display:flex;gap:22px}
+.bar nav a{text-decoration:none;color:var(--muted);font-size:.95rem}
+.bar nav a:hover{color:var(--plum)}
+.bar nav a.home{color:var(--plum);font-weight:600}
+@media (max-width:640px){.bar nav a:not(.home){display:none}}
+
+.hero{background:var(--plum);color:#E7DFF0}
+.hero-in{max-width:1000px;margin:0 auto;padding:64px 24px 56px}
+.hero h1{color:#FBF8F2;font-size:clamp(2.1rem,5vw,3.4rem);max-width:15em}
+.hero .quote{font-family:var(--serif);color:var(--gold);font-size:clamp(1.1rem,2.2vw,1.35rem);margin:22px 0 18px;max-width:34em}
+.hero p{max-width:40em;color:#D6CCE3}
+.hero .by{font-size:.95rem;color:#CFC3DE;margin-top:18px}
+
+main{max-width:1000px;margin:0 auto;padding:0 24px}
+section{padding:48px 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+.intro{color:var(--muted);max-width:42em}
+
+.scale{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:20px}
+.scale div{background:var(--white);padding:14px 16px;font-size:.93rem;color:var(--muted)}
+.scale b{display:block;font-family:var(--serif);font-size:1.4rem;color:var(--plum)}
+@media (max-width:640px){.scale{grid-template-columns:repeat(2,1fr)}}
+
+.area{margin-top:36px}
+.area h2{font-size:1.35rem;display:flex;align-items:baseline;gap:12px}
+.area h2 span{font-family:var(--sans);font-size:.85rem;color:var(--muted);font-weight:500}
+.q{background:var(--white);border:1px solid var(--line);padding:20px 22px;margin-top:14px}
+.q.done{border-left:4px solid var(--gold)}
+.q fieldset{border:0;margin:0;padding:0}
+.q legend{padding:0;font-size:1rem;line-height:1.55}
+.q legend b{font-family:var(--serif);color:var(--gold);margin-right:6px}
+.opts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+.opts input{position:absolute;opacity:0;pointer-events:none}
+.opts label{display:block;text-align:center;border:1px solid var(--line);border-radius:4px;padding:10px 6px;cursor:pointer;font-size:.88rem;color:var(--muted);background:var(--paper);line-height:1.3}
+.opts label b{display:block;font-family:var(--serif);font-size:1.15rem;color:var(--plum)}
+.opts label:hover{border-color:var(--gold)}
+.opts input:checked+label{background:var(--plum);border-color:var(--plum);color:#E7DFF0}
+.opts input:checked+label b{color:var(--gold)}
+.opts input:focus-visible+label{outline:3px solid var(--gold);outline-offset:2px}
+@media (max-width:560px){.opts label span{display:none}}
+
+.sticky-progress{position:sticky;bottom:0;background:rgba(246,244,240,.97);border-top:1px solid var(--line);padding:12px 24px calc(12px + env(safe-area-inset-bottom,0px));z-index:10}
+.sp-in{max-width:1000px;margin:0 auto;display:flex;align-items:center;gap:16px;font-size:.93rem;color:var(--muted)}
+.meter{flex:1;max-width:280px;height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--gold);transition:width .3s}
+.btn{display:inline-block;padding:11px 20px;border-radius:3px;font:600 .95rem var(--sans);text-decoration:none;border:1px solid var(--plum);cursor:pointer}
+.btn.primary{background:var(--plum);color:#fff}
+.btn.primary:hover{background:var(--plum-2)}
+.btn.ghost{background:transparent;color:var(--plum)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+
+#results{display:none}
+#results.show{display:block}
+.total{display:flex;flex-wrap:wrap;align-items:center;gap:28px;background:var(--white);border:1px solid var(--line);border-top:4px solid var(--gold);padding:28px}
+.total .num{font-family:var(--serif);font-size:3.4rem;font-weight:700;color:var(--plum);line-height:1}
+.total .num small{font-size:1.2rem;color:var(--muted);font-weight:400}
+.total h3{font-size:1.5rem}
+.total p{margin:.4rem 0 0;color:var(--muted);max-width:34em}
+.areas{margin-top:24px;display:grid;gap:12px}
+.arow{display:grid;grid-template-columns:170px 1fr 48px;align-items:center;gap:14px;font-size:.95rem}
+.arow .track{height:10px;background:var(--line);border-radius:5px;overflow:hidden}
+.arow .fill{height:100%;border-radius:5px;background:var(--green)}
+.arow.weak .fill{background:var(--red)}
+.arow.weak .name{color:var(--red);font-weight:600}
+.arow .val{text-align:right;font-weight:600;color:var(--plum)}
+@media (max-width:560px){.arow{grid-template-columns:1fr 44px}.arow .track{grid-column:1/-1;order:3}}
+.weak-box{margin-top:24px;background:#FBF1EF;border:1px solid #E7C4BF;border-left:4px solid var(--red);padding:18px 20px}
+.weak-box h3{color:var(--red);font-size:1.1rem;margin-bottom:6px}
+.weak-box ul{margin:.4rem 0 0;padding-left:1.2rem}
+.actions{margin-top:24px}
+.actions h3{font-size:1.15rem;margin-bottom:8px}
+.actions ul{margin:0;padding-left:1.2rem}
+.actions li{margin:.35rem 0}
+.res-tools{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.note{font-size:.9rem;color:var(--muted);font-style:italic;margin-top:24px}
+
+.bands{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.bands div{background:var(--white);border:1px solid var(--line);padding:18px}
+.bands b{font-family:var(--serif);color:var(--plum);display:block;margin-bottom:4px}
+.bands span{font-size:.93rem;color:var(--muted)}
+@media (max-width:760px){.bands{grid-template-columns:1fr}}
+
+.close{background:var(--plum);color:#E7DFF0;margin-top:0}
+.close-in{max-width:1000px;margin:0 auto;padding:56px 24px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.close h2{color:#FBF8F2}
+.close p{color:#D6CCE3}
+.close a{color:var(--gold)}
+.path{border-top:1px solid rgba(196,162,101,.5);padding-top:14px}
+.path+.path{margin-top:20px}
+.path h3{color:var(--gold);font-size:1.1rem;margin-bottom:4px}
+@media (max-width:760px){.close-in{grid-template-columns:1fr}}
+footer{text-align:center;font-size:.88rem;color:var(--muted);padding:32px 24px}
+.foot-links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 24px;margin-bottom:14px;font-size:.95rem}
+.foot-links a{color:var(--plum-2);text-decoration:none;font-weight:500}
+footer p{margin:0}
+
+@media print{
+  .bar,.sticky-progress,.close,footer,.res-tools,.hero .by{display:none!important}
+  body{background:#fff;font-size:12pt}
+  .hero{background:#fff;color:#000}.hero h1,.hero .quote{color:#2B1A45}.hero p{color:#333}
+  .q{break-inside:avoid;padding:10px 14px}.opts label{padding:4px}
+  section{padding:18px 0}
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="/">Tehrani Burke</a>
+    <nav aria-label="Site">
+      <a class="home" href="/">Back to portfolio</a>
+      <a href="/playbook/">Playbook</a>
+      <a href="/#advisory">Advisory work</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-in">
+    <h1>AI Readiness Scorecard for Customer Operations</h1>
+    <p class="quote">AI doesn't fix a broken customer experience. It accelerates whatever you've already built.</p>
+    <p>Before you add AI to your customer operation, find out what it will accelerate. Ten questions across five areas: data, process, governance, people, and measurement. It takes about 10 minutes, and your results appear instantly.</p>
+    <p class="by">By Tehrani Burke, Customer Success, Technology &amp; Operations Executive</p>
+  </div>
+</div>
+
+<main>
+  <section>
+    <h2>How to score</h2>
+    <p class="intro" style="margin-top:12px">Complete it with your team leads. Score what is true today, not what's planned. If you're unsure, choose the lower score.</p>
+    <div class="scale">
+      <div><b>0</b>Not in place</div>
+      <div><b>1</b>Informal or inconsistent; depends on individuals</div>
+      <div><b>2</b>Mostly in place, with some gaps</div>
+      <div><b>3</b>Fully in place, documented, and measured</div>
+    </div>
+  </section>
+
+  <section id="questions" aria-label="Scorecard questions"></section>
+
+  <section id="results" aria-live="polite"></section>
+
+  <section>
+    <h2>What the bands mean</h2>
+    <div class="bands">
+      <div><b>0 to 12: Build the foundation</b><span>AI would speed up inconsistency. Strengthen process and data before adding tools.</span></div>
+      <div><b>13 to 22: Pilot with guardrails</b><span>Enough structure to start, not to expand. One team, one or two clear problems.</span></div>
+      <div><b>23 to 30: Scale selectively</b><span>Strong enough to expand proven use cases deliberately, with review matched to risk.</span></div>
+    </div>
+    <p class="note">This is a practitioner-developed diagnostic, not an industry benchmark. Use it to identify operating gaps and decide where to look more closely.</p>
+  </section>
+</main>
+
+<div class="sticky-progress">
+  <div class="sp-in">
+    <span id="count">0 of 10 answered</span>
+    <div class="meter"><i id="bar"></i></div>
+    <button class="btn primary" id="see" disabled>See my results</button>
+  </div>
+</div>
+
+<div class="close">
+  <div class="close-in">
+    <div>
+      <h2>Found a gap you want help closing?</h2>
+      <p style="margin-top:14px">The scorecard shows where the gaps are. Closing them is the work I do: building the lifecycle, governance, and reporting underneath customer operations so AI has something solid to accelerate.</p>
+    </div>
+    <div>
+      <div class="path">
+        <h3>Start with the playbook</h3>
+        <p>Frameworks, templates, and checklists for the operating foundation. <a href="/playbook/">Open the playbook</a></p>
+      </div>
+      <div class="path">
+        <h3>Work with me</h3>
+        <p>The SaaS Customer Success &amp; Revenue Diagnostic. <a href="/#advisory">See advisory work</a> or <a href="https://calendly.com/tehraniburke/intro_call_with_tehrani_burke_30_minutes">book an intro call</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <nav class="foot-links" aria-label="Tehrani Burke site">
+    <a href="/">Portfolio</a>
+    <a href="/playbook/">Playbook</a>
+    <a href="/#leadership">Leadership track</a>
+    <a href="/#advisory">Advisory work</a>
+    <a href="https://calendly.com/tehraniburke/intro_call_with_tehrani_burke_30_minutes">Book a call</a>
+    <a href="https://www.linkedin.com/in/tehraniburke">LinkedIn</a>
+  </nav>
+  <p>AI Readiness Scorecard by Tehrani Burke. Free to use in your own organization.</p>
+</footer>
+
+<script>
+(function(){
+  var AREAS=[
+    {name:"Data foundation",qs:[
+      "Customer data (accounts, contacts, usage, and health) lives in a system of record the team trusts and keeps current.",
+      "Tickets and customer interactions are categorized consistently (reason, severity, and resolution), so patterns can be analyzed."],
+     fix:"Standardize ticket categories and clean up your system of record so AI works from data you trust."},
+    {name:"Process clarity",qs:[
+      "The customer lifecycle has defined stages, owners, and handoffs that are documented and followed.",
+      "The team's most common tasks and ticket drivers have documented, repeatable steps, such as runbooks or playbooks."],
+     fix:"Document lifecycle stages, owners, and handoffs, and write runbooks for your top ticket drivers, so AI has a reliable process to follow."},
+    {name:"Governance",qs:[
+      "Approved AI tools, permitted and prohibited data, and acceptable-use expectations are documented and understood by the team.",
+      "AI workflows have defined owners, review requirements based on risk, and a clear process for flagging and correcting inaccurate or inappropriate outputs."],
+     fix:"Write down approved tools and data rules, and assign owners and risk-based review to every AI workflow before expanding."},
+    {name:"People & adoption",qs:[
+      "Team members know how to write effective prompts and how to check AI output for accuracy.",
+      "Leaders model responsible AI use, and teams have structured time to test use cases, share what works, and document repeatable practices."],
+     fix:"Train the team on prompting and output checking, and set aside regular time to test and share what works."},
+    {name:"Measurement",qs:[
+      "You have current baselines for the metrics AI is meant to improve, such as response time, resolution time, CSAT, or retention.",
+      "Each AI use case starts with a defined business or customer problem, an accountable owner, and success criteria set before the pilot begins."],
+     fix:"Capture baselines and define the problem, owner, and success criteria before any pilot, so you can prove what AI changed."}
+  ];
+  var LABELS=["Not in place","Informal","Mostly in place","Fully in place"];
+  var KEY="tb-ai-readiness";
+  var answers=[];
+  try{answers=JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){answers=[]}
+  if(!Array.isArray(answers))answers=[];
+
+  var qwrap=document.getElementById("questions"),n=0,html="";
+  AREAS.forEach(function(a,ai){
+    html+='<div class="area"><h2>'+(ai+1)+'. '+a.name+'<span>'+(ai*2+1)+'–'+(ai*2+2)+' of 10</span></h2>';
+    a.qs.forEach(function(q){
+      var i=n++;
+      html+='<div class="q" id="q'+i+'"><fieldset><legend><b>'+(i+1)+'.</b>'+q+'</legend><div class="opts">';
+      for(var s=0;s<4;s++){
+        html+='<input type="radio" name="q'+i+'" id="q'+i+'s'+s+'" value="'+s+'"'+(answers[i]===s?' checked':'')+'><label for="q'+i+'s'+s+'"><b>'+s+'</b><span>'+LABELS[s]+'</span></label>';
+      }
+      html+='</div></fieldset></div>';
+    });
+    html+='</div>';
+  });
+  qwrap.innerHTML=html;
+
+  var count=document.getElementById("count"),bar=document.getElementById("bar"),see=document.getElementById("see"),res=document.getElementById("results");
+  function answered(){var c=0;for(var i=0;i<10;i++)if(typeof answers[i]==="number")c++;return c}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(answers))}catch(e){}}
+  function progress(){
+    var c=answered();
+    count.textContent=c===10?"All 10 answered":c+" of 10 answered";
+    bar.style.width=(c*10)+"%";
+    see.disabled=c<10;
+    for(var i=0;i<10;i++){var el=document.getElementById("q"+i);if(el)el.classList.toggle("done",typeof answers[i]==="number")}
+  }
+  qwrap.addEventListener("change",function(e){
+    if(e.target.name){answers[parseInt(e.target.name.slice(1),10)]=parseInt(e.target.value,10);save();progress();if(res.classList.contains("show"))render(false)}
+  });
+
+  function render(scroll){
+    var total=0,areaScores=AREAS.map(function(a,ai){var s=answers[ai*2]+answers[ai*2+1];total+=s;return s});
+    var band,desc,acts;
+    if(total<=12){band="Build the foundation";desc="AI would speed up inconsistency and expose gaps to customers faster. Strengthen process and data before adding tools.";
+      acts=["Document your lifecycle stages, owners, and handoffs.","Standardize how tickets are categorized.","Set basic AI usage rules now, since your team may already be using AI tools."];}
+    else if(total<=22){band="Pilot with guardrails";desc="You have enough structure to start, but not to expand. Choose one team and one or two problems with clear baselines.";
+      acts=["Run a 30-day pilot with one team and one or two clearly defined problems.","Start with internal tasks, like ticket theme analysis or business review prep, before anything customer-facing.","Review outputs closely until quality is consistent."];}
+    else{band="Scale selectively";desc="Your operating foundation is strong enough to expand proven AI use cases deliberately.";
+      acts=["Build a shared prompt library for your team from the workflows that already work.","Extend proven workflows to new teams, with review matched to risk.","Report AI results against baselines to leadership every quarter."];}
+    var weak=[];
+    var h='<h2>Your results</h2><div class="total" style="margin-top:18px"><div class="num">'+total+'<small> / 30</small></div><div><h3>'+band+'</h3><p>'+desc+'</p></div></div><div class="areas">';
+    AREAS.forEach(function(a,ai){var s=areaScores[ai],w=s<=2;if(w)weak.push(a);
+      h+='<div class="arow'+(w?' weak':'')+'"><span class="name">'+a.name+'</span><div class="track"><div class="fill" style="width:'+(s/6*100)+'%"></div></div><span class="val">'+s+' / 6</span></div>';});
+    h+='</div>';
+    if(weak.length){
+      h+='<div class="weak-box"><h3>Weakest-link warning</h3><p style="margin:0">'+(weak.length===1?'One area scores':'These areas score')+' 2 or less out of 6. Address '+(weak.length===1?'it':'them')+' before expanding AI, no matter how high your total is. AI will find your weakest link and put it under pressure.</p><ul>';
+      weak.forEach(function(a){h+='<li><strong>'+a.name+':</strong> '+a.fix+'</li>'});
+      h+='</ul></div>';
+    }
+    h+='<div class="actions"><h3>Your next steps</h3><ul>';
+    acts.forEach(function(x){h+='<li>'+x+'</li>'});
+    h+='</ul></div><div class="res-tools"><button class="btn primary" id="print">Print or save as PDF</button><button class="btn ghost" id="reset">Start over</button></div>';
+    res.innerHTML=h;res.classList.add("show");
+    document.getElementById("print").onclick=function(){window.print()};
+    document.getElementById("reset").onclick=function(){
+      answers=[];save();res.classList.remove("show");res.innerHTML="";
+      [].forEach.call(document.querySelectorAll('.opts input'),function(i){i.checked=false});progress();
+      document.getElementById("q0").scrollIntoView();
+    };
+    if(scroll)res.scrollIntoView();
+  }
+  see.addEventListener("click",function(){if(answered()===10)render(true)});
+  progress();
+  if(answered()===10)render(false);
+})();
+</script>
+</body>
+</html>
