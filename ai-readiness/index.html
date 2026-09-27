@@ -12,6 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
 <style>
 :root{
   --plum:#2B1A45; --plum-2:#3A2658; --gold:#C4A265; --gold-soft:#E9DDC2;
@@ -129,6 +130,39 @@ footer{text-align:center;font-size:.88rem;color:var(--muted);padding:32px 24px}
 .foot-links a{color:var(--plum-2);text-decoration:none;font-weight:500}
 footer p{margin:0}
 
+/* Kit form, restyled to match tehraniburke.com */
+.tb-kit{background:var(--white,#fff);border:1px solid var(--line,#DDD6E6);border-top:4px solid var(--gold,#C4A265);border-radius:4px;max-width:640px;margin:0 auto;position:relative;text-align:left}
+.tb-kit *{box-sizing:border-box}
+.tb-kit [data-style="minimal"]{padding:32px}
+@media (max-width:560px){.tb-kit [data-style="minimal"]{padding:22px}}
+.tb-kit .formkit-header h2{font-family:var(--serif,"Roboto Slab",Georgia,serif);color:var(--plum,#2B1A45);font-size:1.5rem;line-height:1.25;margin:0 0 10px;font-weight:700}
+.tb-kit .formkit-subheader p{color:var(--muted,#5F5673);font-size:1rem;margin:0 0 18px}
+.tb-kit .formkit-fields{display:flex;flex-direction:column;gap:12px}
+.tb-kit .formkit-input{width:100%;font:inherit;font-size:1rem;padding:13px 14px;border:1px solid var(--line,#DDD6E6);border-radius:3px;background:#fff;color:#221B2E}
+.tb-kit .formkit-input:focus{outline:3px solid var(--gold,#C4A265);outline-offset:1px;border-color:var(--plum,#2B1A45)}
+.tb-kit .formkit-submit{position:relative;overflow:hidden;border:0;border-radius:3px;background:var(--plum,#2B1A45);color:#fff;font:600 1rem var(--sans,Inter,system-ui,sans-serif);cursor:pointer;padding:0}
+.tb-kit .formkit-submit>span{display:block;padding:14px 22px;transition:background .2s}
+.tb-kit .formkit-submit:hover>span,.tb-kit .formkit-submit:focus-visible>span{background:rgba(255,255,255,.08)}
+.tb-kit .formkit-submit:focus-visible{outline:3px solid var(--gold,#C4A265);outline-offset:2px}
+.tb-kit .formkit-guarantee p{font-size:.85rem;color:var(--muted,#5F5673);margin:12px 0 0}
+.tb-kit .formkit-alert{list-style:none;margin:0 0 14px;padding:12px;border-radius:3px;font-size:.95rem}
+.tb-kit .formkit-alert:empty{display:none}
+.tb-kit .formkit-alert-error{background:#FBF1EF;border:1px solid #E7C4BF;color:#A6423A}
+.tb-kit .formkit-alert-success{background:#EEF6F1;border:1px solid #BFD9C9;color:#2F6247;font-size:1rem;padding:16px}
+.tb-kit .formkit-spinner{display:flex;height:0;width:0;margin:0 auto;position:absolute;top:0;left:0;right:0;overflow:hidden}
+.tb-kit .formkit-spinner>div{margin:auto;width:10px;height:10px;background:#fff;opacity:.4;border-radius:100%;display:inline-block;animation:tbkit-bounce 1.4s infinite ease-in-out both}
+.tb-kit .formkit-spinner>div:nth-child(1){animation-delay:-.32s}.tb-kit .formkit-spinner>div:nth-child(2){animation-delay:-.16s}
+.tb-kit .formkit-submit[data-active] .formkit-spinner{height:100%;width:50px}
+.tb-kit .formkit-submit[data-active] .formkit-spinner~span{opacity:0}
+@keyframes tbkit-bounce{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
+.tb-kit .formkit-powered-by-convertkit-container{margin-top:14px;text-align:center}
+.tb-kit .tb-kit-badge{font-size:.75rem;color:#8A819C;text-decoration:none}
+.tb-kit .tb-kit-badge:hover{text-decoration:underline}
+
+#toolkit-offer .offer-h{text-align:center;margin-bottom:22px}
+#toolkit-offer .offer-h h2{font-size:1.6rem}
+#toolkit-offer .offer-h p{color:var(--muted);max-width:36em;margin:8px auto 0}
+@media print{#toolkit-offer{display:none!important}}
 @media print{
   .bar,.sticky-progress,.close,footer,.res-tools,.hero .by{display:none!important}
   body{background:#fff;font-size:12pt}
@@ -176,6 +210,25 @@ footer p{margin:0}
 
   <section id="results" aria-live="polite"></section>
 
+  <section id="toolkit-offer" hidden>
+    <div class="offer-h"><h2>Turn your score into an action plan</h2><p>Get the free toolkit: 12 practical prompts matched to these five areas, AI guardrails, a 30-day rollout plan, and a pilot charter.</p></div>
+<form action="https://app.kit.com/forms/9967252/subscriptions" class="seva-form formkit-form tb-kit" method="post" data-sv-form="9967252" data-uid="c688845b8b" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Thanks! Check your inbox for an email from Tehrani Burke, then click the button inside to confirm and download your toolkit.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:true,&quot;url&quot;:&quot;https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800">
+  <div data-style="minimal">
+    <div class="formkit-header" data-element="header"><h2>Get the AI-Enabled Customer Operations Toolkit</h2></div>
+    <div class="formkit-subheader" data-element="subheader"><p>A practical 15-page guide for Customer Success and Operations leaders: readiness scorecard, 12 prompts, guardrails, a 30-day rollout plan, and a pilot charter.</p></div>
+    <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+    <div data-element="fields" data-stacked="true" class="seva-fields formkit-fields">
+      <div class="formkit-field"><input class="formkit-input" aria-label="First name" name="fields[first_name]" placeholder="First name" type="text" autocomplete="given-name"></div>
+      <div class="formkit-field"><input class="formkit-input" name="email_address" aria-label="Work email" placeholder="Work email" required type="email" autocomplete="email"></div>
+      <button data-element="submit" class="formkit-submit"><div class="formkit-spinner"><div></div><div></div><div></div></div><span>Send me the toolkit</span></button>
+    </div>
+    <div class="formkit-guarantee" data-element="guarantee"><p>You'll also receive occasional practical insights on Customer Success, AI, and operations. Unsubscribe anytime.</p></div>
+    <div class="formkit-powered-by-convertkit-container"><a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit tb-kit-badge" data-variant="dark" target="_blank" rel="nofollow noopener">Built with Kit</a></div>
+  </div>
+</form>
+
+  </section>
+
   <section>
     <h2>What the bands mean</h2>
     <div class="bands">
@@ -203,6 +256,10 @@ footer p{margin:0}
     </div>
     <div>
       <div class="path">
+        <h3>Get the free toolkit</h3>
+        <p>Prompts, guardrails, and a 30-day rollout plan to act on your score. <a href="/toolkit/">Get the toolkit</a></p>
+      </div>
+      <div class="path">
         <h3>Start with the playbook</h3>
         <p>Frameworks, templates, and checklists for the operating foundation. <a href="/playbook/">Open the playbook</a></p>
       </div>
@@ -218,6 +275,7 @@ footer p{margin:0}
   <nav class="foot-links" aria-label="Tehrani Burke site">
     <a href="/">Portfolio</a>
     <a href="/playbook/">Playbook</a>
+    <a href="/toolkit/">Free AI toolkit</a>
     <a href="/#leadership">Leadership track</a>
     <a href="/#advisory">Advisory work</a>
     <a href="https://calendly.com/tehraniburke/intro_call_with_tehrani_burke_30_minutes">Book a call</a>
@@ -307,10 +365,10 @@ footer p{margin:0}
     h+='<div class="actions"><h3>Your next steps</h3><ul>';
     acts.forEach(function(x){h+='<li>'+x+'</li>'});
     h+='</ul></div><div class="res-tools"><button class="btn primary" id="print">Print or save as PDF</button><button class="btn ghost" id="reset">Start over</button></div>';
-    res.innerHTML=h;res.classList.add("show");
+    res.innerHTML=h;res.classList.add("show");document.getElementById("toolkit-offer").hidden=false;
     document.getElementById("print").onclick=function(){window.print()};
     document.getElementById("reset").onclick=function(){
-      answers=[];save();res.classList.remove("show");res.innerHTML="";
+      answers=[];save();res.classList.remove("show");res.innerHTML="";document.getElementById("toolkit-offer").hidden=true;
       [].forEach.call(document.querySelectorAll('.opts input'),function(i){i.checked=false});progress();
       document.getElementById("q0").scrollIntoView();
     };
