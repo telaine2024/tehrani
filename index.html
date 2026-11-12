@@ -206,8 +206,8 @@
     padding: 0;
   }
   .record .item {
-    flex: 1 1 160px;
-    padding: 16px 18px;
+    flex: 1 1 200px;
+    padding: 16px 20px;
     border-right: 1px solid var(--ink-line);
     font-size: 13px;
     color: #C7BDD4;
@@ -394,7 +394,45 @@
   }
   footer a { color: #EFEDE7; text-decoration: none; border-bottom: 1px solid #5C4778; }
   footer a:hover { border-color: var(--accent); }
+
+  /* Contact + newsletter section (added Nov 2026) */
+  section.connect { background: var(--ink); color: #EFEDE7; padding: 72px 0; }
+  .connect-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  @media (max-width: 820px) { .connect-grid { grid-template-columns: 1fr; gap: 36px; } }
+  .connect h2 { font-family: var(--font-display); color: #FFFFFF; font-size: 2rem; margin: 0 0 14px; }
+  .connect p.lead { color: #D9D3E3; font-size: 1.05rem; line-height: 1.6; margin: 0 0 26px; max-width: 34rem; }
+  .connect-actions { display: flex; flex-direction: column; gap: 12px; max-width: 22rem; }
+  .connect-actions .btn { text-align: center; }
+  .connect-meta { margin-top: 22px; color: #BFB6CC; font-size: .95rem; }
+  .connect-meta a { color: var(--accent); }
+.tb-kit{background:var(--white,#fff);border:1px solid var(--line,#DDD6E6);border-top:4px solid var(--gold,#C4A265);border-radius:4px;max-width:640px;margin:0 auto;position:relative;text-align:left}
+.tb-kit *{box-sizing:border-box}
+.tb-kit [data-style="minimal"]{padding:32px}
+.tb-kit .formkit-header h2{font-family:var(--serif,"Roboto Slab",Georgia,serif);color:var(--plum,#2B1A45);font-size:1.5rem;line-height:1.25;margin:0 0 10px;font-weight:700}
+.tb-kit .formkit-subheader p{color:var(--muted,#5F5673);font-size:1rem;margin:0 0 18px}
+.tb-kit .formkit-fields{display:flex;flex-direction:column;gap:12px}
+.tb-kit .formkit-input{width:100%;font:inherit;font-size:1rem;padding:13px 14px;border:1px solid var(--line,#DDD6E6);border-radius:3px;background:#fff;color:#221B2E}
+.tb-kit .formkit-input:focus{outline:3px solid var(--gold,#C4A265);outline-offset:1px;border-color:var(--plum,#2B1A45)}
+.tb-kit .formkit-submit{position:relative;overflow:hidden;border:0;border-radius:3px;background:var(--plum,#2B1A45);color:#fff;font:600 1rem var(--sans,Inter,system-ui,sans-serif);cursor:pointer;padding:0}
+.tb-kit .formkit-submit>span{display:block;padding:14px 22px;transition:background .2s}
+.tb-kit .formkit-submit:hover>span,.tb-kit .formkit-submit:focus-visible>span{background:rgba(255,255,255,.08)}
+.tb-kit .formkit-submit:focus-visible{outline:3px solid var(--gold,#C4A265);outline-offset:2px}
+.tb-kit .formkit-guarantee p{font-size:.85rem;color:var(--muted,#5F5673);margin:12px 0 0}
+.tb-kit .formkit-alert{list-style:none;margin:0 0 14px;padding:12px;border-radius:3px;font-size:.95rem}
+.tb-kit .formkit-alert:empty{display:none}
+.tb-kit .formkit-alert-error{background:#FBF1EF;border:1px solid #E7C4BF;color:#A6423A}
+.tb-kit .formkit-alert-success{background:#EEF6F1;border:1px solid #BFD9C9;color:#2F6247;font-size:1rem;padding:16px}
+.tb-kit .formkit-spinner{display:flex;height:0;width:0;margin:0 auto;position:absolute;top:0;left:0;right:0;overflow:hidden}
+.tb-kit .formkit-spinner>div{margin:auto;width:10px;height:10px;background:#fff;opacity:.4;border-radius:100%;display:inline-block;animation:tbkit-bounce 1.4s infinite ease-in-out both}
+.tb-kit .formkit-spinner>div:nth-child(1){animation-delay:-.32s}.tb-kit .formkit-spinner>div:nth-child(2){animation-delay:-.16s}
+.tb-kit .formkit-submit[data-active] .formkit-spinner{height:100%;width:50px}
+.tb-kit .formkit-submit[data-active] .formkit-spinner~span{opacity:0}
+.tb-kit .formkit-powered-by-convertkit-container{margin-top:14px;text-align:center}
+.tb-kit .tb-kit-badge{font-size:.75rem;color:#8A819C;text-decoration:none}
+.tb-kit .tb-kit-badge:hover{text-decoration:underline}
 </style>
+<script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+<script data-goatcounter="https://tehraniburke.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 
@@ -416,9 +454,10 @@
     <div class="copy">
       <h1>Tehrani Burke</h1>
       <p class="role">Customer Success, Technology &amp; Operations Executive</p>
-      <p class="lede">I build and scale Customer Success, CX, and technical operations where technology, customer outcomes, and revenue intersect. I lead cross-functional programs from scope to launch, aligning Product, Engineering, and Operations around measurable outcomes, and turn complex service environments into structured systems that improve adoption, retention, operational performance, and growth.</p>
+      <p class="lede">I build and scale Customer Success, CX, and technical operations where technology, customer outcomes, and revenue intersect. I turn complex service environments into structured, measurable systems that improve adoption, retention, operational performance, and growth.</p>
       <div class="ctas">
         <a class="btn primary" href="#leadership">See the leadership track</a>
+        <a class="btn ghost" href="#advisory">See advisory work</a>
       </div>
     </div>
     <div class="portrait">
@@ -430,20 +469,20 @@
 <div class="stats">
   <div class="wrap stats-grid">
     <div class="stat">
-      <div class="num">$1.3M</div>
-      <div class="label">At-risk enterprise account recovered, B.E.S.T.</div>
+      <div class="num">0&rarr;1</div>
+      <div class="label">Chapter operating infrastructure built from zero, NSLS</div>
     </div>
     <div class="stat">
-      <div class="num">50%+</div>
-      <div class="label">Fewer escalations within 30 days, Apple</div>
-    </div>
-    <div class="stat">
-      <div class="num">35%</div>
-      <div class="label">Faster resolution across 250+ enterprise partners, B.E.S.T.</div>
+      <div class="num">40%+</div>
+      <div class="label">At-risk participants retained, OneTen</div>
     </div>
     <div class="stat">
       <div class="num">$5M+</div>
       <div class="label">Annual enterprise &amp; education renewals influenced, Apple</div>
+    </div>
+    <div class="stat">
+      <div class="num">$1.3M</div>
+      <div class="label">At-risk enterprise account recovered, B.E.S.T.</div>
     </div>
   </div>
 </div>
@@ -454,14 +493,25 @@
     <div class="item"><strong>OneTen</strong>Head of Customer Success &amp; Experience</div>
     <div class="item"><strong>Apple</strong>Director of Customer Success</div>
     <div class="item"><strong>Match Group</strong>Corporate CX Operations &amp; Escalation Authority</div>
-    <div class="item"><strong>Due Diligence Defense</strong>Founding Operations Leader &amp; Head of Client Success</div>
   </div>
 </div>
 
 <section class="block" id="leadership">
   <div class="wrap">
     <h2>Leadership track</h2>
-    <p class="intro">For hiring teams evaluating Customer Success, CX, Operations, or technical customer organization leadership. Each entry below is a real situation I stepped into, what I built, and the measurable result.</p>
+    <p class="intro">For hiring teams evaluating Customer Success or CX Operations leadership. Each entry below is a real situation I stepped into, what I built, and the measurable result.</p>
+
+    <div class="case">
+      <div class="meta">
+        <strong>NSLS</strong>
+        <div class="role">VP of Operations, Executive Board</div>
+        <div class="when">2025&ndash;present</div>
+      </div>
+      <ul>
+        <li>Own chapter strategy, operations, and programming execution for the University of Phoenix chapter, building organizational infrastructure, dashboards, and communication systems from zero.</li>
+        <li>Promoted from Leadership Development Department through competitive selection.</li>
+      </ul>
+    </div>
 
     <div class="case">
       <div class="meta">
@@ -470,9 +520,8 @@
         <div class="when">2024–2026</div>
       </div>
       <ul>
-        <li>Led customer and technical operations programs for 250+ enterprise customers and partners, using ServiceNow and enterprise service-management workflows to establish incident management, escalation governance, SLA visibility, and backlog control.</li>
-        <li>Designed and rolled out AI-enabled troubleshooting guides, runbooks, and performance dashboards, reducing resolution time by 35% and increasing customer satisfaction by 40%.</li>
-        <li>Led high-severity incidents and executive escalations, coordinating resolution, communications, ownership, and follow-through across Product, Engineering, Support, and business stakeholders.</li>
+        <li>Built and scaled customer and technical operations from the ground up, leveraging ServiceNow and enterprise service-management workflows to oversee incident management, escalation governance, SLA performance, backlog control, and end-to-end service delivery for 250+ enterprise partners.</li>
+        <li>Designed AI-driven troubleshooting guides, runbooks, and performance dashboards, reducing resolution time by 35% and increasing customer satisfaction by 40%.</li>
         <li>Recovered a $1.3M enterprise account at risk of churn after the partner questioned delivered ROI, rebuilding trust through transparent value reporting and relationship-driven account management.</li>
       </ul>
     </div>
@@ -486,9 +535,7 @@
       <ul>
         <li>Built the Customer Success function from zero, architecting Customer Impact Plans, onboarding systems, escalation workflows, health scoring models, and digital engagement programs serving 1,000+ registered users across 10+ Fortune 500 partner organizations.</li>
         <li>Co-built OneTen's HubSpot CRM and pipeline architecture, originally scoped for Marketing, and extended it into Acquisition and the Talent side as engagement needs grew.</li>
-        <li>Designed and ran an 81-session recurring webinar and platform-enablement program across U.S. time zones, expanding access to training, adoption support, and issue resolution.</li>
         <li>Took over a ticket queue two years behind on resolution, personally reaching out to every affected user and retaining 40%+ of at-risk participants who intended to leave the platform.</li>
-        <li>Reduced SLA breaches by 25% and inbound ticket volume by 20% through structured triage and self-service enablement.</li>
       </ul>
     </div>
 
@@ -499,9 +546,8 @@
         <div class="when">2014–2021</div>
       </div>
       <ul>
-        <li>Led cross-departmental rollouts of new software and support tools across 500+ global advisors in North America, EMEA, and APAC, spanning iOS, Mac, Apple TV, and App Store ecosystems.</li>
-        <li>Led 15 to 25 senior managers, each supported by a team lead and about 25 advisors, through skip-level reviews, 1:1s, and structured performance planning.</li>
-        <li>Led an escalation-reduction initiative: identified why issues were escalating, created reference resources for managers, and reduced escalations by more than 50% within 30 days.</li>
+        <li>Led enterprise customer success and technical service delivery across iOS, Mac, Apple TV, and App Store ecosystems, scaling operations to support 500+ global advisors across North America, EMEA, and APAC.</li>
+        <li>Led approximately 15 to 25 Tier 2 managers, conducting skip-level reviews, 1:1s, and structured performance planning while leading cross-departmental rollouts of new software and support tools.</li>
         <li>Influenced $5M+ in annual enterprise and education renewals; earned Apple's Leadership Award every quarter for four consecutive years.</li>
       </ul>
     </div>
@@ -518,32 +564,8 @@
       </ul>
     </div>
 
-    <div class="case">
-      <div class="meta">
-        <strong>Due Diligence Defense</strong>
-        <div class="role">Founding Operations Leader &amp; Head of Client Success</div>
-        <div class="when">2008&ndash;2014</div>
-      </div>
-      <ul>
-        <li>Built end-to-end B2B client operations, service delivery, and issue resolution in a regulated, high-trust environment, growing repeat business and referrals by 18%+.</li>
-      </ul>
-    </div>
-
-    <div class="case">
-      <div class="meta">
-        <strong>NSLS</strong>
-        <div class="role">Additional leadership, University of Phoenix Chapter</div>
-        <div class="when">2025&ndash;present</div>
-      </div>
-      <ul>
-        <li>Vice President of Operations (Mar 2026&ndash;present): build operational infrastructure, including dashboards, governance frameworks, communication systems, and cross-functional workflows.</li>
-        <li>Previously Director, Leadership Development &amp; Interview Operations (Aug 2025&ndash;Mar 2026).</li>
-      </ul>
-    </div>
-
     <h3 style="font-family: var(--font-display); font-size: 20px; margin: 56px 0 6px;">How I operate</h3>
     <p style="font-size: 15px; color: var(--text-muted); max-width: 62ch; margin: 0 0 8px;">The same underlying framework shows up across every engagement above, just applied to a different customer base and business model.</p>
-    <p style="font-size: 17px; color: var(--text); max-width: 62ch; margin: 14px 0 8px; font-style: italic;">My measure of executive leadership isn't how many decisions reach my desk. It's how many sound decisions my organization can make because I've developed the people, systems, and judgment to support them.</p>
 
     <div class="framework-wrap">
       <svg viewBox="0 0 1300 300" xmlns="http://www.w3.org/2000/svg">
@@ -630,7 +652,7 @@
         </div>
         <div>
           <div class="cat">Data &amp; analytics</div>
-          <div class="list">SQL, Tableau, Looker, Power BI, Google Analytics, Excel</div>
+          <div class="list">Tableau, Looker, Power BI, Google Analytics, Excel &amp; SQL</div>
         </div>
         <div>
           <div class="cat">Operations &amp; workflow</div>
@@ -639,20 +661,11 @@
       </div>
     </div>
 
-    <div style="margin-top: 36px;">
-      <div class="tools-grid">
-        <div>
-          <div class="cat">Education &amp; certifications</div>
-          <div class="list">B.S., Business Administration, University of Phoenix &middot; Executive Leadership &amp; Management, Harvard Business School Online &middot; Certified Customer Success Manager (CCSM) &middot; Six Sigma Green Belt</div>
-        </div>
-      </div>
-    </div>
-
     <div style="margin-top:40px; display:flex; align-items:center; gap:22px; flex-wrap:wrap;">
       <a class="btn primary" href="https://calendly.com/tehraniburke/intro_call_with_tehrani_burke_30_minutes" target="_blank" rel="noopener">Book a call</a>
       <p style="font-size:15px; color:var(--text-muted); margin:0;">
-        Open to Senior Director, VP, and senior program leadership roles across Customer Success, CX, and Technical Operations. Full resume and references available on request.
-        <a href="mailto:tehrani.burke@gmail.com?subject=Resume%20request" style="color:var(--accent); font-weight:600;">Email me</a>.
+        Full resume, references, and background details available on request.
+        <a href="mailto:hello@tehraniburke.com?subject=Resume%20request" style="color:var(--accent); font-weight:600;">Email me</a>.
       </p>
     </div>
   </div>
@@ -694,6 +707,10 @@
       </a>
       <a class="article-item" href="https://www.linkedin.com/pulse/empathy-isnt-soft-skillits-strategy-scales-tehrani-burke-c9q8c" target="_blank" rel="noopener">
         <span class="title">Empathy Isn’t a Soft Skill—It’s the Strategy That Scales</span>
+        <span class="cue">Read on LinkedIn</span>
+      </a>
+      <a class="article-item" href="https://www.linkedin.com/pulse/when-speaking-up-makes-you-target-silent-cost-workplace-tehrani-burke-vrxmc" target="_blank" rel="noopener">
+        <span class="title">When Speaking Up Makes You a Target: The Silent Cost of Workplace Advocacy</span>
         <span class="cue">Read on LinkedIn</span>
       </a>
       <a class="article-item" href="https://www.linkedin.com/pulse/transforming-challenges-opportunities-mastering-customer-burke-wnbjc" target="_blank" rel="noopener">
@@ -746,11 +763,43 @@
   </div>
 </section>
 
-<footer id="contact">
+
+<section class="connect" id="contact">
+  <div class="wrap connect-grid">
+    <div>
+      <h2>Let's connect</h2>
+      <p class="lead">Hiring for a Customer Success, CX, or Operations leadership role? Exploring the SaaS Customer Success &amp; Revenue Diagnostic? I'd love to hear from you.</p>
+      <div class="connect-actions">
+        <a class="btn primary" href="https://calendly.com/tehraniburke/intro_call_with_tehrani_burke_30_minutes" target="_blank" rel="noopener">Book a 30-minute call</a>
+        <a class="btn ghost" href="mailto:hello@tehraniburke.com?subject=Hello%20Tehrani">Email hello@tehraniburke.com</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/tehraniburke" target="_blank" rel="noopener">Connect on LinkedIn</a>
+      </div>
+      <p class="connect-meta">Based in Dallas, TX &middot; Open to remote and DFW roles &middot; <a href="mailto:hello@tehraniburke.com?subject=Resume%20request">Request my resume</a></p>
+    </div>
+    <div>
+<form action="https://app.kit.com/forms/9967252/subscriptions" class="seva-form formkit-form tb-kit" method="post" data-sv-form="9967252" data-uid="c688845b8b" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Thanks! Check your inbox for an email from Tehrani Burke, then click the button inside to confirm and download your toolkit.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:true,&quot;url&quot;:&quot;https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800">
+  <div data-style="minimal">
+    <div class="formkit-header" data-element="header"><h2>Get practical CX &amp; AI operations insights</h2></div>
+    <div class="formkit-subheader" data-element="subheader"><p>Join my list for occasional, practical notes on Customer Success, operations, and AI, and get the free AI-Enabled Customer Operations Toolkit as a welcome gift.</p></div>
+    <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+    <div data-element="fields" data-stacked="true" class="seva-fields formkit-fields">
+      <div class="formkit-field"><input class="formkit-input" aria-label="First name" name="fields[first_name]" placeholder="First name" type="text" autocomplete="given-name"></div>
+      <div class="formkit-field"><input class="formkit-input" name="email_address" aria-label="Work email" placeholder="Work email" required type="email" autocomplete="email"></div>
+      <button data-element="submit" class="formkit-submit"><div class="formkit-spinner"><div></div><div></div><div></div></div><span>Subscribe</span></button>
+    </div>
+    <div class="formkit-guarantee" data-element="guarantee"><p>No spam. Unsubscribe anytime.</p></div>
+    <div class="formkit-powered-by-convertkit-container"><a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit tb-kit-badge" data-variant="dark" target="_blank" rel="nofollow noopener">Built with Kit</a></div>
+  </div>
+</form>
+    </div>
+  </div>
+</section>
+
+<footer>
   <div class="wrap">
     <div>Tehrani Burke — Dallas, TX</div>
     <div>
-      <a href="mailto:tehrani.burke@gmail.com">tehrani.burke@gmail.com</a>
+      <a href="mailto:hello@tehraniburke.com">hello@tehraniburke.com</a>
       &nbsp; &middot; &nbsp;
       <a href="https://linkedin.com/in/tehraniburke" target="_blank" rel="noopener">LinkedIn</a>
     </div>
