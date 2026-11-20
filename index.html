@@ -94,11 +94,13 @@
     padding-bottom: 3px;
   }
   .topnav nav a:hover { color: var(--text); border-color: var(--accent); }
+  .topnav nav a.nav-feature { color: var(--text); font-weight: 600; border-color: var(--accent); }
   @media (max-width: 640px) {
     .topnav .wrap { flex-direction: column; align-items: flex-start; height: auto; padding-top: 10px; padding-bottom: 8px; gap: 6px; }
     .topnav nav { gap: 18px; overflow-x: auto; max-width: 100%; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .topnav nav::-webkit-scrollbar { display: none; }
     .topnav nav a { white-space: nowrap; }
+    .topnav nav a.nav-feature { order: -1; }
   }
 
   /* ---------- Hero ---------- */
@@ -444,6 +446,7 @@
       <a href="#leadership">Leadership track</a>
       <a href="#writing">Thought leadership</a>
       <a href="/playbook/">Playbook</a>
+      <a class="nav-feature" href="/ai-readiness/">AI Scorecard</a>
       <a href="#advisory">Advisory work</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -458,6 +461,7 @@
       <p class="lede">I build and scale Customer Success, CX, and technical operations where technology, customer outcomes, and revenue intersect. I lead cross-functional programs from scope to launch, aligning Product, Engineering, and Operations around measurable outcomes, and turn complex service environments into structured systems that improve adoption, retention, operational performance, and growth.</p>
       <div class="ctas">
         <a class="btn primary" href="#leadership">See the leadership track</a>
+        <a class="btn ghost" href="/ai-readiness/">Take the AI Readiness Scorecard</a>
       </div>
     </div>
     <div class="portrait">
